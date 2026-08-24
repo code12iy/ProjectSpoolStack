@@ -1,6 +1,36 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [page, setPage] = useState('dashboard')
+
+  if (page === 'filament') {
+    return (
+      <main>
+        <button onClick={() => setPage('dashboard')}>
+          ← Back
+        </button>
+
+        <header>
+          <h1>Filament</h1>
+          <p>Track your filament spools and inventory.</p>
+        </header>
+
+        <section>
+          <div className="card">
+            <h3>No spools yet</h3>
+            <p>
+              Add your first filament spool to start tracking your
+              3D printing inventory.
+            </p>
+          </div>
+        </section>
+
+        <button>Add Filament</button>
+      </main>
+    )
+  }
+
   return (
     <main>
       <header>
@@ -33,7 +63,10 @@ function App() {
       </section>
 
       <div className="buttons">
-        <button>Filament</button>
+        <button onClick={() => setPage('filament')}>
+          Filament
+        </button>
+
         <button>Print Jobs</button>
         <button>Costs</button>
         <button>Products</button>
